@@ -1,0 +1,56 @@
+/home/user1/VS_Workspace/speed-dating-application/
+├── app.log
+├── config
+│   ├── db.js
+│   └── passport.js
+├── dist
+│   ├── styles.css
+│   └── todoList.bundle.js
+├── logger.js
+├── package.json
+├── package-lock.json
+├── project_structure.txt
+├── readme.md
+├── server.js
+├── src
+│   ├── components
+│   │   ├── common
+│   │   │   └── store.js
+│   │   └── entry
+│   │       └── todoList
+│   │           ├── components
+│   │           │   └── todo
+│   │           │       └── todo.pug
+│   │           ├── index.js
+│   │           ├── lib
+│   │           │   ├── actions.js
+│   │           │   ├── reducer.js
+│   │           │   └── rendering.js
+│   │           ├── todoList.css
+│   │           └── todoList.pug
+│   ├── index.js
+│   ├── models
+│   │   ├── Todo.js
+│   │   └── User.js
+│   └── views
+│       ├── admin.pug
+│       ├── analytics.pug
+│       ├── customer-support.pug
+│       ├── finance.pug
+│       ├── human-resources.pug
+│       ├── includes
+│       │   ├── footer.pug
+│       │   └── header.pug
+│       ├── index.pug
+│       ├── it-support.pug
+│       ├── layout.pug
+│       ├── login.pug
+│       ├── marketing.pug
+│       ├── operations.pug
+│       ├── other-business.pug
+│       ├── register.pug
+│       ├── reports.pug
+│       └── sales.pug
+└── webpack.config.js
+
+14 directories, 40 files

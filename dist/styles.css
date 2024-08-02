@@ -1,0 +1,160 @@
+/* General styles */
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+body {
+  background: steelblue;
+  color: white;
+  padding: 12px;
+}
+
+header {
+  background: #333;
+  color: #fff;
+  padding: 10px 20px;
+}
+
+nav ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+}
+
+nav ul li {
+  margin-right: 10px;
+}
+
+nav ul li a {
+  color: #fff;
+  text-decoration: none;
+}
+
+form div {
+  margin-bottom: 10px;
+}
+
+form label {
+  display: block;
+}
+
+form input, form select, form button {
+  width: 100%;
+  padding: 8px;
+  box-sizing: border-box;
+}
+
+/* Card styles */
+.card {
+  background: white;
+  color: black;
+  border-radius: 8px;
+  padding: 16px;
+  max-width: 400px;
+  margin: 5px auto;
+  overflow: hidden;
+  height: 400px;
+  display: flex;
+  flex-direction: column;
+}
+
+.card-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 16px;
+}
+
+.card-header.black h1, .card-header.black a {
+  color: black;
+}
+
+.card-body {
+  flex: 1;
+  overflow-y: auto;
+}
+
+.card-body ul {
+  list-style: none;
+  padding: 0;
+}
+
+.card-body li:nth-child(odd) {
+  background: #f0f0f0;
+}
+
+.card-body li:nth-child(even) {
+  background: #ffffff;
+}
+
+/* Flexbox container */
+.container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.row {
+  display: flex;
+  justify-content: center;
+  max-width: 1200px;
+  width: 100%;
+  margin-bottom: 5px;
+}
+
+.col-md-3 {
+  flex: 1;
+  max-width: 25%;
+  box-sizing: border-box;
+  padding: 5px;
+}
+
+/* Team color styles */
+.card-header.it-support h1, .card-header.it-support a {
+  color: #FF5733; /* Fiery Orange */
+}
+
+.card-header.human-resources h1, .card-header.human-resources a {
+  color: #33C4FF; /* Sky Blue */
+}
+
+.card-header.finance h1, .card-header.finance a {
+  color: #FF33A1; /* Hot Pink */
+}
+
+.card-header.customer-support h1, .card-header.customer-support a {
+  color: #33FF57; /* Neon Green */
+}
+
+.card-header.operations h1, .card-header.operations a {
+  color: #FFD433; /* Vibrant Yellow */
+}
+
+.card-header.marketing h1, .card-header.marketing a {
+  color: #8B33FF; /* Electric Purple */
+}
+
+.card-header.sales h1, .card-header.sales a {
+  color: #FF5733; /* Fiery Orange */
+}
+
+.card-header.reports h1, .card-header.reports a {
+  color: #33FF57; /* Neon Green */
+}
+
+.card-header.analytics h1, .card-header.analytics a {
+  color: #FF4500; /* OrangeRed, similar to Reddit */
+}
+
+/* Custom styles for Reports link */
+.card-header.black a {
+  color: black; /* Set color to black */
+  text-decoration: none; /* Remove underline */
+}
+
+.card-header.black a:hover {
+  text-decoration: underline; /* Optional: Add underline on hover */
+}

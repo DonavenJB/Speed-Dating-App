@@ -1,0 +1,21 @@
+include ../components/entry/todoList/todoList.pug
+html
+  include ./includes/header.pug
+  head
+    title Finance
+    link(rel="stylesheet", href="/styles.css")
+  body
+    .container
+      .row
+        .col-md-12
+          .card
+            .card-header.finance
+              h1 Finance
+            .card-body
+              ul
+                li Budget Allocated: $200,000
+                li Expenses: $180,000
+                li Profit: $20,000
+                li Savings: $10,000
+                li Investments: $15,000
+    include ./includes/footer.pug

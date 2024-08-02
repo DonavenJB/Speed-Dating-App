@@ -1,0 +1,21 @@
+include ../components/entry/todoList/todoList.pug
+html
+  include ./includes/header.pug
+  head
+    title Reports
+    link(rel="stylesheet", href="/styles.css")
+  body
+    .container
+      .row
+        .col-md-12
+          .card
+            .card-header.reports
+              h1 Reports
+            .card-body
+              ul
+                li Total Reports: 120
+                li Monthly Reports: 15
+                li Quarterly Reports: 5
+                li Yearly Reports: 2
+                li Pending Reports: 3
+    include ./includes/footer.pug

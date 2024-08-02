@@ -1,0 +1,21 @@
+include ../components/entry/todoList/todoList.pug
+html
+  include ./includes/header.pug
+  head
+    title Operations
+    link(rel="stylesheet", href="/styles.css")
+  body
+    .container
+      .row
+        .col-md-12
+          .card
+            .card-header.operations
+              h1 Operations
+            .card-body
+              ul
+                li Events Planned: 30
+                li Successful Events: 28
+                li Vendors Managed: 15
+                li Logistics Handled: 40
+                li Budget Utilization: 95%
+    include ./includes/footer.pug

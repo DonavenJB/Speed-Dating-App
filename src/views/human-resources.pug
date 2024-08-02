@@ -1,0 +1,21 @@
+include ../components/entry/todoList/todoList.pug
+html
+  include ./includes/header.pug
+  head
+    title Human Resources
+    link(rel="stylesheet", href="/styles.css")
+  body
+    .container
+      .row
+        .col-md-12
+          .card
+            .card-header.human-resources
+              h1 Human Resources
+            .card-body
+              ul
+                li Employees: 50
+                li New Hires: 5
+                li Employee Turnover: 2
+                li Training Sessions: 10
+                li Benefits Provided: Yes
+    include ./includes/footer.pug

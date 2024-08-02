@@ -1,0 +1,21 @@
+include ../components/entry/todoList/todoList.pug
+html
+  include ./includes/header.pug
+  head
+    title IT Support
+    link(rel="stylesheet", href="/styles.css")
+  body
+    .container
+      .row
+        .col-md-12
+          .card
+            .card-header.it-support
+              h1 IT Support
+            .card-body
+              ul
+                li Systems Monitored: 20
+                li Incidents Resolved: 30
+                li Downtime: 5 hours
+                li Security Breaches: 0
+                li Software Updates: Weekly
+    include ./includes/footer.pug

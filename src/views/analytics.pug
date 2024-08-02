@@ -1,0 +1,21 @@
+include ../components/entry/todoList/todoList.pug
+html
+  include ./includes/header.pug
+  head
+    title Analytics
+    link(rel="stylesheet", href="/styles.css")
+  body
+    .container
+      .row
+        .col-md-12
+          .card
+            .card-header.analytics
+              h1 Analytics
+            .card-body
+              ul
+                li Total Analytics: 150
+                li Monthly Analytics: 12
+                li Quarterly Analytics: 4
+                li Yearly Analytics: 1
+                li Pending Analytics: 2
+    include ./includes/footer.pug

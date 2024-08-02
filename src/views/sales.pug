@@ -1,0 +1,21 @@
+include ../components/entry/todoList/todoList.pug
+html
+  include ./includes/header.pug
+  head
+    title Sales
+    link(rel="stylesheet", href="/styles.css")
+  body
+    .container
+      .row
+        .col-md-12
+          .card
+            .card-header.sales
+              h1 Sales
+            .card-body
+              ul
+                li Total Revenue: $120,000
+                li Monthly Sales: $10,000
+                li New Clients: 15
+                li Returning Clients: 50
+                li Sales Target Achievement: 80%
+    include ./includes/footer.pug

@@ -1,0 +1,21 @@
+include ../components/entry/todoList/todoList.pug
+html
+  include ./includes/header.pug
+  head
+    title Customer Support
+    link(rel="stylesheet", href="/styles.css")
+  body
+    .container
+      .row
+        .col-md-12
+          .card
+            .card-header.customer-support
+              h1 Customer Support
+            .card-body
+              ul
+                li Tickets Resolved: 120
+                li Average Resolution Time: 3 hours
+                li Customer Satisfaction: 90%
+                li Support Calls: 80
+                li Feedback Collected: 50
+    include ./includes/footer.pug

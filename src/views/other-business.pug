@@ -1,0 +1,21 @@
+include ../components/entry/todoList/todoList.pug
+html
+  include ./includes/header.pug
+  head
+    title Other Business
+    link(rel="stylesheet", href="/styles.css")
+  body
+    .container
+      .row
+        .col-md-12
+          .card
+            .card-header
+              h1 Other Business
+            .card-body
+              ul
+                li Business Detail 1: Example 1
+                li Business Detail 2: Example 2
+                li Business Detail 3: Example 3
+                li Business Detail 4: Example 4
+                li Business Detail 5: Example 5
+    include ./includes/footer.pug

@@ -1,0 +1,14 @@
+head
+  title Todos
+  link(rel="stylesheet", href="/styles.css")
+body
+  nav
+    ul
+      li: a(href="/") Home
+      if !user
+        li: a(href="/register") Register
+        li: a(href="/login") Login
+      else
+        li: a(href="/logout") Logout
+        if user.role === 'admin'
+          li: a(href="/admin") Admin

@@ -1,0 +1,21 @@
+include ../components/entry/todoList/todoList.pug
+html
+  include ./includes/header.pug
+  head
+    title Marketing
+    link(rel="stylesheet", href="/styles.css")
+  body
+    .container
+      .row
+        .col-md-12
+          .card
+            .card-header.marketing
+              h1 Marketing
+            .card-body
+              ul
+                li Campaigns: 10
+                li Leads Generated: 200
+                li Conversion Rate: 25%
+                li Ad Spend: $5,000
+                li ROI: 150%
+    include ./includes/footer.pug
