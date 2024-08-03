@@ -7,7 +7,8 @@ const passport = require('passport');
 const connectDB = require("../config/db");
 const User = require("./models/User");
 const Todo = require("./models/Todo");
-const logger = require('../logger');  // Correctly import the logger
+const logger = require('../logger');  // General logger
+const { maskedLogger } = require('./components/entry/todoList/logger/lib/logger');  // Masked logger
 
 // Ensure Passport configuration is loaded
 require('../config/passport')(passport);
@@ -15,7 +16,7 @@ require('../config/passport')(passport);
 const app = express();
 
 logger.info('[Startup] Application starting...');
-logger.debug('[Startup] Environment variables loaded:', process.env);
+maskedLogger.debug('[Startup] Environment variables loaded:', process.env); // Sensitive data: Environment variables
 
 connectDB();
 logger.info('[Database] Database connected successfully');
@@ -44,7 +45,7 @@ app.use(passport.session());
 logger.info('[Middleware] Passport session middleware added');
 
 app.use((req, res, next) => {
-  logger.debug('[Middleware] User in session:', req.user);
+  maskedLogger.debug('[Middleware] User in session:', req.user); // Sensitive data: User session information
   res.locals.user = req.user;
   next();
 });
@@ -52,7 +53,7 @@ logger.info('[Middleware] User information added to response locals');
 
 function ensureAuthenticated(req, res, next) {
   if (req.isAuthenticated()) {
-    logger.debug('[Middleware] User authenticated:', req.user._id);
+    maskedLogger.debug('[Middleware] User authenticated:', req.user._id); // Sensitive data: User ID
     return next();
   }
   logger.info('[Middleware] User not authenticated, redirecting to /login');
@@ -62,10 +63,10 @@ function ensureAuthenticated(req, res, next) {
 app.get("/", ensureAuthenticated, async (req, res) => {
   logger.info('[GET /] Request received');
   try {
-    logger.debug('[GET /] Fetching todos for user:', req.user._id);
+    maskedLogger.debug('[GET /] Fetching todos for user:', req.user._id); // Sensitive data: User ID
     const todos = await Todo.find({ user: req.user._id });
     logger.info('[GET /] Todos fetched successfully');
-    logger.debug('[GET /] Todos:', JSON.stringify(todos));
+    maskedLogger.debug('[GET /] Todos:', JSON.stringify(todos)); // Sensitive data: Todos information
     res.render("index", { todos, user: req.user });
     logger.info('[GET /] Response rendered with todos and user information');
   } catch (error) {
@@ -137,20 +138,20 @@ app.get("/other-business", ensureAuthenticated, (req, res) => {
 
 app.post("/todo", ensureAuthenticated, async (req, res) => {
   logger.info('[POST /todo] Request received');
-  logger.debug('[POST /todo] Request body:', req.body);
+  maskedLogger.debug('[POST /todo] Request body:', req.body); // Sensitive data: Request body
   try {
-    logger.debug('[POST /todo] Creating new todo:', req.body.todo);
+    maskedLogger.debug('[POST /todo] Creating new todo:', req.body.todo); // Sensitive data: New todo data
     const newTodo = new Todo({
       text: req.body.todo,
-      user: req.user._id
+      user: req.user._id // Sensitive data: User ID
     });
     await newTodo.save();
     logger.info('[POST /todo] Todo saved successfully');
-    logger.debug('[POST /todo] Saved todo:', JSON.stringify(newTodo));
+    maskedLogger.debug('[POST /todo] Saved todo:', JSON.stringify(newTodo)); // Sensitive data: Saved todo data
 
     const todos = await Todo.find({ user: req.user._id });
     logger.info('[POST /todo] Fetched todos for response');
-    logger.debug('[POST /todo] Todos:', JSON.stringify(todos));
+    maskedLogger.debug('[POST /todo] Todos:', JSON.stringify(todos)); // Sensitive data: Todos information
     res.json(todos);
     logger.info('[POST /todo] JSON response sent with todos');
   } catch (error) {
@@ -175,9 +176,9 @@ app.get("/login", (req, res) => {
 app.post("/register", async (req, res) => {
   const { username, password, role } = req.body;
   logger.info('[POST /register] Request received');
-  logger.debug('[POST /register] Request body:', req.body);
+  maskedLogger.debug('[POST /register] Request body:', req.body); // Sensitive data: Registration data
   try {
-    logger.debug('[POST /register] Creating new user with username:', username);
+    maskedLogger.debug('[POST /register] Creating new user with username:', username); // Sensitive data: Username
     const user = new User({ username, password, role });
     await user.save();
     logger.info('[POST /register] User registered successfully');
@@ -192,7 +193,7 @@ app.post("/register", async (req, res) => {
 
 app.post("/login", (req, res, next) => {
   logger.info('[POST /login] Request received');
-  logger.debug('[POST /login] Request body:', req.body);
+  maskedLogger.debug('[POST /login] Request body:', req.body); // Sensitive data: Login data
   passport.authenticate('local', (err, user, info) => {
     if (err) {
       logger.error('[POST /login] Authentication error:', err);
@@ -215,7 +216,7 @@ app.post("/login", (req, res, next) => {
 
 app.get("/logout", (req, res, next) => {
   logger.info('[GET /logout] Request received');
-  logger.debug('[GET /logout] Logging out user:', req.user._id);
+  maskedLogger.debug('[GET /logout] Logging out user:', req.user._id); // Sensitive data: User ID
   req.logout((err) => {
     if (err) {
       logger.error('[GET /logout] Logout error:', err);

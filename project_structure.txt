@@ -10,24 +10,29 @@
 ├── package.json
 ├── package-lock.json
 ├── project_structure.txt
-├── readme.md
 ├── server.js
 ├── src
 │   ├── components
 │   │   ├── common
 │   │   │   └── store.js
-│   │   └── entry
-│   │       └── todoList
-│   │           ├── components
-│   │           │   └── todo
-│   │           │       └── todo.pug
-│   │           ├── index.js
-│   │           ├── lib
-│   │           │   ├── actions.js
-│   │           │   ├── reducer.js
-│   │           │   └── rendering.js
-│   │           ├── todoList.css
-│   │           └── todoList.pug
+│   │   ├── entry
+│   │   │   └── todoList
+│   │   │       ├── components
+│   │   │       │   └── todo
+│   │   │       │       └── todo.pug
+│   │   │       ├── index.js
+│   │   │       ├── lib
+│   │   │       │   ├── actions.js
+│   │   │       │   ├── reducer.js
+│   │   │       │   └── rendering.js
+│   │   │       ├── logger
+│   │   │       │   └── lib
+│   │   │       │       ├── logger.js
+│   │   │       │       ├── mask.js
+│   │   │       │       └── User.js
+│   │   │       ├── todoList.css
+│   │   │       └── todoList.pug
+│   │   └── masked.log
 │   ├── index.js
 │   ├── models
 │   │   ├── Todo.js
@@ -53,4 +58,4 @@
 │       └── sales.pug
 └── webpack.config.js
 
-14 directories, 40 files
+16 directories, 43 files
