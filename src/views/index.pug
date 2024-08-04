@@ -4,92 +4,108 @@ html
     title Todos
     link(rel="stylesheet", href="/styles.css")
   body
-    .container
-      .row
-        .col-md-3
-          .card
-            a(href="/tickets" class="full-card-link")
-              .card-header.black
-                h1 Tickets
-              .card-body.center-icon
-                i(class="fa-solid fa-ticket large-icon")
-        .col-md-3
-          .card
-            a(href="/teams" class="full-card-link")
-              .card-header.black
-                h1 Teams
-              .card-body.center-icon
-                i(class="fa-solid fa-user-group large-icon")
-        .col-md-3
-          .card
-            a(href="/reports" class="full-card-link")
-              .card-header.black
-                h1 Reports
-              .card-body.center-icon
-                i(class="fa-solid fa-chart-pie large-icon")
-        .col-md-3
-          .card
-            a(href="/other-business" class="full-card-link")
-              .card-header.black
-                h1 Our Businesses
-              .card-body.center-icon
-                i(class="fa-solid fa-industry large-icon")
-      .row
-        .col-md-3
-          .card
-            a(href="/it-support" class="full-card-link")
-              .card-header.it-support
-                h1 Infotech
-              .card-body.center-icon
-                i(class="fa-solid fa-network-wired large-icon")
-        .col-md-3
-          .card
-            a(href="/human-resources" class="full-card-link")
-              .card-header.human-resources
-                h1 Personnel
-              .card-body.center-icon
-                i(class="fa-solid fa-people-arrows large-icon")
-        .col-md-3
-          .card
-            a(href="/finance" class="full-card-link")
-              .card-header.finance
-                h1 Finance
-              .card-body.center-icon
-                i(class="fa-solid fa-scale-unbalanced large-icon")
-        .col-md-3
-          .card
-            a(href="/customer-support" class="full-card-link")
-              .card-header.customer-support
-                h1 Support
-              .card-body.center-icon
-                i(class="fa-solid fa-headset large-icon")
-      .row
-        .col-md-3
-          .card
-            a(href="/operations" class="full-card-link")
-              .card-header.operations
-                h1 Operations
-              .card-body.center-icon
-                i(class="fa-solid fa-globe large-icon")
-        .col-md-3
-          .card
-            a(href="/marketing" class="full-card-link")
-              .card-header.marketing
-                h1 Marketing
-              .card-body.center-icon
-                i(class="fa-solid fa-square-poll-vertical large-icon")
-        .col-md-3
-          .card
-            a(href="/sales" class="full-card-link")
-              .card-header.sales
-                h1 Sales
-              .card-body.center-icon
-                i(class="fa-solid fa-file-invoice-dollar large-icon")
-        .col-md-3
-          .card
-            a(href="/analytics" class="full-card-link")
-              .card-header.analytics
-                h1 Analytics
-              .card-body.center-icon
-                i(class="fa-solid fa-book-open-reader large-icon")
+    .center-wrapper
+      .container
+        .row
+          .col-md-3
+            .card
+              a(href="/tickets" class="full-card-link")
+                .card-header.black
+                  h1 Tickets
+                .card-body.center-icon
+                  i(class="fa-solid fa-ticket large-icon")
+          .col-md-3
+            .card
+              a(href="/teams" class="full-card-link")
+                .card-header.black
+                  h1 Teams
+                .card-body.center-icon
+                  i(class="fa-solid fa-user-group large-icon")
+          .col-md-3
+            .card
+              a(href="/reports" class="full-card-link")
+                .card-header.black
+                  h1 Reports
+                .card-body.center-icon
+                  i(class="fa-solid fa-chart-pie large-icon")
+          .col-md-3
+            .card
+              a(href="/other-business" class="full-card-link")
+                .card-header.black
+                  h1 Our Businesses
+                .card-body.center-icon
+                  i(class="fa-solid fa-industry large-icon")
+        .row
+          .col-md-3
+            .card
+              a(href="/it-support" class="full-card-link")
+                .card-header.it-support
+                  h1 Infotech
+                .card-body.center-icon
+                  i(class="fa-solid fa-network-wired large-icon")
+          .col-md-3
+            .card
+              a(href="/human-resources" class="full-card-link")
+                .card-header.human-resources
+                  h1 Personnel
+                .card-body.center-icon
+                  i(class="fa-solid fa-people-arrows large-icon")
+          .col-md-3
+            .card
+              a(href="/finance" class="full-card-link")
+                .card-header.finance
+                  h1 Finance
+                .card-body.center-icon
+                  i(class="fa-solid fa-scale-unbalanced large-icon")
+          .col-md-3
+            .card
+              a(href="/operations" class="full-card-link")
+                .card-header.operations
+                  h1 Projects
+                .card-body.center-icon
+                  i(class="fa-solid fa-diagram-project large-icon")
+        .row
+          .col-md-3
+            .card
+              a(href="/operations" class="full-card-link")
+                .card-header.operations
+                  h1 Operations
+                .card-body.center-icon
+                  i(class="fa-solid fa-globe large-icon")
+          .col-md-3
+            .card
+              a(href="/marketing" class="full-card-link")
+                .card-header.marketing
+                  h1 Marketing
+                .card-body.center-icon
+                  i(class="fa-solid fa-square-poll-vertical large-icon")
+          .col-md-3
+            .card
+              a(href="/sales" class="full-card-link")
+                .card-header.sales
+                  h1 Sales
+                .card-body.center-icon
+                  i(class="fa-solid fa-file-invoice-dollar large-icon")
+          .col-md-3
+            .card
+              a(href="/analytics" class="full-card-link")
+                .card-header.analytics
+                  h1 Analytics
+                .card-body.center-icon
+                  i(class="fa-solid fa-book-open-reader large-icon")
+        .row.last-row
+          .col-md-3
+            .card
+              a(href="/customer-support" class="full-card-link")
+                .card-header.customer-support
+                  h1 Support
+                .card-body.center-icon
+                  i(class="fa-solid fa-headset large-icon")
+          .col-md-3
+            .card
+              a(href="/marketing" class="full-card-link")
+                .card-header.marketing
+                  h1 Mail - Outlook
+                .card-body.center-icon
+                  i(class="fa-solid fa-square-poll-vertical large-icon")
     include ./includes/footer.pug
