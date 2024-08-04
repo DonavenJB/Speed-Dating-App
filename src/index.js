@@ -8,9 +8,8 @@ const connectDB = require("../config/db");
 const User = require("./models/User");
 const Todo = require("./models/Todo");
 const Mask = require("./components/entry/todoList/logger/lib/mask");
-const logger = new Mask(require("./components/entry/todoList/logger/lib/logger")); // Import and use the masked logger
+const logger = new Mask(require("./components/entry/todoList/logger/lib/logger")); 
 
-// Ensure Passport configuration is loaded
 require('../config/passport')(passport);
 
 const app = express();
@@ -55,8 +54,50 @@ app.get("/", ensureAuthenticated, async (req, res) => {
   }
 });
 
+app.get("/tickets", ensureAuthenticated, async (req, res) => {
+  try {
+    const todos = await Todo.find({ user: req.user._id });
+    res.render("tickets", { todos, user: req.user, page: 'tickets' });
+  } catch (error) {
+    res.status(500).send('Server Error');
+  }
+});
+
 app.get("/reports", ensureAuthenticated, (req, res) => {
   res.render("reports", { page: 'reports' });
+});
+
+// Add the following routes to serve the respective Pug templates
+app.get("/teams", ensureAuthenticated, (req, res) => {
+  res.render("teams", { page: 'teams' });
+});
+
+app.get("/other-business", ensureAuthenticated, (req, res) => {
+  res.render("other-business", { page: 'other-business' });
+});
+
+app.get("/it-support", ensureAuthenticated, (req, res) => {
+  res.render("it-support", { page: 'it-support' });
+});
+
+app.get("/human-resources", ensureAuthenticated, (req, res) => {
+  res.render("human-resources", { page: 'human-resources' });
+});
+
+app.get("/finance", ensureAuthenticated, (req, res) => {
+  res.render("finance", { page: 'finance' });
+});
+
+app.get("/customer-support", ensureAuthenticated, (req, res) => {
+  res.render("customer-support", { page: 'customer-support' });
+});
+
+app.get("/operations", ensureAuthenticated, (req, res) => {
+  res.render("operations", { page: 'operations' });
+});
+
+app.get("/marketing", ensureAuthenticated, (req, res) => {
+  res.render("marketing", { page: 'marketing' });
 });
 
 app.get("/sales", ensureAuthenticated, (req, res) => {
@@ -65,34 +106,6 @@ app.get("/sales", ensureAuthenticated, (req, res) => {
 
 app.get("/analytics", ensureAuthenticated, (req, res) => {
   res.render("analytics", { page: 'analytics' });
-});
-
-app.get("/customer-support", ensureAuthenticated, (req, res) => {
-  res.render("customer-support", { page: 'customer-support' });
-});
-
-app.get("/finance", ensureAuthenticated, (req, res) => {
-  res.render("finance", { page: 'finance' });
-});
-
-app.get("/human-resources", ensureAuthenticated, (req, res) => {
-  res.render("human-resources", { page: 'human-resources' });
-});
-
-app.get("/it-support", ensureAuthenticated, (req, res) => {
-  res.render("it-support", { page: 'it-support' });
-});
-
-app.get("/marketing", ensureAuthenticated, (req, res) => {
-  res.render("marketing", { page: 'marketing' });
-});
-
-app.get("/operations", ensureAuthenticated, (req, res) => {
-  res.render("operations", { page: 'operations' });
-});
-
-app.get("/other-business", ensureAuthenticated, (req, res) => {
-  res.render("other-business", { page: 'other-business' });
 });
 
 app.post("/todo", ensureAuthenticated, async (req, res) => {

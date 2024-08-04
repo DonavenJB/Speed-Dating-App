@@ -1,5 +1,3 @@
-include ../components/entry/todoList/todoList.pug
-
 html
   include ./includes/header.pug
   head
@@ -10,147 +8,88 @@ html
       .row
         .col-md-3
           .card
-            .card-header.black
-              h1 Todos:
-              span.counter(data-js="number-of-todos")= todos.length
-            .card-body
-              +todoList(todos)
+            a(href="/tickets" class="full-card-link")
+              .card-header.black
+                h1 Tickets
+              .card-body.center-icon
+                i(class="fa-solid fa-ticket large-icon")
         .col-md-3
           .card
-            .card-header.black
-              h1
-                a(href="/teams") Teams:
-            .card-body
-              ul
-                li.it-support Information Technology
-                li.human-resources Human Resources
-                li.finance Finance
-                li.customer-support Customer Support
-                li.operations Operations
-                li.marketing Marketing
-                li.sales Sales
-                li.reports Reports
-                li.analytics Analytics
+            a(href="/teams" class="full-card-link")
+              .card-header.black
+                h1 Teams
+              .card-body.center-icon
+                i(class="fa-solid fa-user-group large-icon")
         .col-md-3
           .card
-            .card-header.black
-              h1
-                a(href="/reports") Reports:
-            .card-body
-              ul
-                li Total Reports: 120
-                li Monthly Reports: 15
-                li Quarterly Reports: 5
-                li Yearly Reports: 2
-                li Pending Reports: 3
+            a(href="/reports" class="full-card-link")
+              .card-header.black
+                h1 Reports
+              .card-body.center-icon
+                i(class="fa-solid fa-chart-pie large-icon")
         .col-md-3
           .card
-            .card-header.black
-              h1
-                a(href="/other-business") Our Businesses
-            .card-body
-              ul
-                li Real Estate
-                li Information Technology
-                li Services
-                li Media
-                li Events Management
+            a(href="/other-business" class="full-card-link")
+              .card-header.black
+                h1 Our Businesses
+              .card-body.center-icon
+                i(class="fa-solid fa-industry large-icon")
       .row
         .col-md-3
           .card
-            .card-header.it-support
-              h1
-                a(href="/it-support") Information Technology
-            .card-body
-              ul
-                li Systems Monitored: 20
-                li Incidents Resolved: 30
-                li Downtime: 5 hours
-                li Security Breaches: 0
-                li Software Updates: Weekly
+            a(href="/it-support" class="full-card-link")
+              .card-header.it-support
+                h1 Infotech
+              .card-body.center-icon
+                i(class="fa-solid fa-network-wired large-icon")
         .col-md-3
           .card
-            .card-header.human-resources
-              h1
-                a(href="/human-resources") Human Resources:
-            .card-body
-              ul
-                li Employees: 50
-                li New Hires: 5
-                li Employee Turnover: 2
-                li Training Sessions: 10
-                li Benefits Provided: Yes
+            a(href="/human-resources" class="full-card-link")
+              .card-header.human-resources
+                h1 Personnel
+              .card-body.center-icon
+                i(class="fa-solid fa-people-arrows large-icon")
         .col-md-3
           .card
-            .card-header.finance
-              h1
-                a(href="/finance") Finance:
-            .card-body
-              ul
-                li Budget Allocated: $200,000
-                li Expenses: $180,000
-                li Profit: $20,000
-                li Savings: $10,000
-                li Investments: $15,000
+            a(href="/finance" class="full-card-link")
+              .card-header.finance
+                h1 Finance
+              .card-body.center-icon
+                i(class="fa-solid fa-scale-unbalanced large-icon")
         .col-md-3
           .card
-            .card-header.customer-support
-              h1
-                a(href="/customer-support") Customer Support:
-            .card-body
-              ul
-                li Tickets Resolved: 120
-                li Average Resolution Time: 3 hours
-                li Customer Satisfaction: 90%
-                li Support Calls: 80
-                li Feedback Collected: 50
+            a(href="/customer-support" class="full-card-link")
+              .card-header.customer-support
+                h1 Support
+              .card-body.center-icon
+                i(class="fa-solid fa-headset large-icon")
       .row
         .col-md-3
           .card
-            .card-header.operations
-              h1
-                a(href="/operations") Operations:
-            .card-body
-              ul
-                li Events Planned: 30
-                li Successful Events: 28
-                li Vendors Managed: 15
-                li Logistics Handled: 40
-                li Budget Utilization: 95%
+            a(href="/operations" class="full-card-link")
+              .card-header.operations
+                h1 Operations
+              .card-body.center-icon
+                i(class="fa-solid fa-globe large-icon")
         .col-md-3
           .card
-            .card-header.marketing
-              h1
-                a(href="/marketing") Marketing:
-            .card-body
-              ul
-                li Campaigns: 10
-                li Leads Generated: 200
-                li Conversion Rate: 25%
-                li Ad Spend: $5,000
-                li ROI: 150%
+            a(href="/marketing" class="full-card-link")
+              .card-header.marketing
+                h1 Marketing
+              .card-body.center-icon
+                i(class="fa-solid fa-square-poll-vertical large-icon")
         .col-md-3
           .card
-            .card-header.sales
-              h1
-                a(href="/sales") Sales:
-            .card-body
-              ul
-                li Total Revenue: $120,000
-                li Monthly Sales: $10,000
-                li New Clients: 15
-                li Returning Clients: 50
-                li Sales Target Achievement: 80%
+            a(href="/sales" class="full-card-link")
+              .card-header.sales
+                h1 Sales
+              .card-body.center-icon
+                i(class="fa-solid fa-file-invoice-dollar large-icon")
         .col-md-3
           .card
-            .card-header.analytics
-              h1
-                a(href="/analytics") Analytics:
-            .card-body
-              ul
-                li Total Analytics: 150
-                li Monthly Analytics: 12
-                li Quarterly Analytics: 4
-                li Yearly Analytics: 1
-                li Pending Analytics: 2
+            a(href="/analytics" class="full-card-link")
+              .card-header.analytics
+                h1 Analytics
+              .card-body.center-icon
+                i(class="fa-solid fa-book-open-reader large-icon")
     include ./includes/footer.pug

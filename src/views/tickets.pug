@@ -1,0 +1,19 @@
+include ../components/entry/todoList/todoList.pug
+
+html
+  include ./includes/header.pug
+  head
+    title Tickets
+    link(rel="stylesheet", href="/styles.css")
+  body
+    .container
+      .row
+        .col-md-12
+          .card
+            .card-header.black
+              h1
+                a(href="/tickets") Tickets
+              span.counter(data-js="number-of-todos")= todos.length
+            .card-body
+              +todoList(todos)
+    include ./includes/footer.pug

@@ -1,9 +1,8 @@
-/* Centering container */
-.center-container {
+.center-icon {
   display: flex;
   justify-content: center;
   align-items: center;
-  height: 100vh;
+  height: 100%;
 }
 
 /* General styles */
@@ -34,7 +33,7 @@ header {
 }
 
 header .brand {
-  font-size: 24px;
+  font-size: 36px;
   font-weight: bold;
   color: white;
   text-decoration: none;
@@ -141,24 +140,30 @@ form input, form select, form button {
   background: white;
   color: black;
   border-radius: 8px;
-  padding: 12px;  /* Decreased padding */
+  padding: 12px;  
   width: 250px;
   height: 197px;
-  margin: 3px;  /* Decreased margin */
+  margin: 3px;  
   overflow: hidden;
   display: flex;
   flex-direction: column;
+  transition: background-color 0.3s ease; 
+}
+
+.card:hover {
+  background-color: #e0e0e0; 
 }
 
 .card-header {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  margin-bottom: 12px;  /* Decreased margin */
+  margin-bottom: 12px;  
 }
 
 .card-header.black h1, .card-header.black a {
   color: black;
+  font-size: 24px;
 }
 
 .card-body {
@@ -191,65 +196,84 @@ form input, form select, form button {
   justify-content: center;
   max-width: 1200px;
   width: 100%;
-  margin-bottom: -1px;  /* Decreased margin */
+  margin-bottom: -1px;  
 }
 
 .col-md-3 {
-  flex: 0 0 250px;  /* Set fixed width */
-  max-width: 250px;  /* Set fixed width */
+  flex: 0 0 250px;  
+  max-width: 250px;  
   box-sizing: border-box;
-  padding: 3px;  /* Decreased padding */
+  padding: 3px;  
 }
 
 .row .col-md-3:not(:last-child) {
-  margin-right: 10px; /* Decreased horizontal margin */
+  margin-right: 10px; 
 }
 
 /* Team color styles */
 .card-header.it-support h1, .card-header.it-support a {
-  color: #FF5733; /* Fiery Orange */
+  text-decoration: none;
+  color: black;
+  font-size: 24px;
 }
 
 .card-header.human-resources h1, .card-header.human-resources a {
-  color: #33C4FF; /* Sky Blue */
+  color: black; /* Sky Blue */
+  text-decoration: none;
+  font-size: 24px;
 }
 
 .card-header.finance h1, .card-header.finance a {
-  color: #FF33A1; /* Hot Pink */
+  color: black;
+  text-decoration: none;
+  font-size: 24px;
 }
 
 .card-header.customer-support h1, .card-header.customer-support a {
-  color: #33FF57; /* Neon Green */
+  color: black;
+  text-decoration: none;
+  font-size: 24px;
 }
 
 .card-header.operations h1, .card-header.operations a {
-  color: #FFD433; /* Vibrant Yellow */
+  color: black;
+  text-decoration: none;
+  font-size: 24px;
 }
 
 .card-header.marketing h1, .card-header.marketing a {
-  color: #8B33FF; /* Electric Purple */
+  color: black;
+  text-decoration: none;
+  font-size: 24px;
 }
 
 .card-header.sales h1, .card-header.sales a {
-  color: #FF5733; /* Fiery Orange */
+  color: black;
+  text-decoration: none;
+  font-size: 24px;
 }
 
 .card-header.reports h1, .card-header.reports a {
-  color: #33FF57; /* Neon Green */
+  color: black;
+  text-decoration: none;
+  font-size: 24px;
 }
 
 .card-header.analytics h1, .card-header.analytics a {
-  color: #FF4500; /* OrangeRed, similar to Reddit */
+  color: black;
+  text-decoration: none;
+  font-size: 24px;
 }
 
 /* Custom styles for Reports link */
 .card-header.black a {
-  color: black; /* Set color to black */
-  text-decoration: none; /* Remove underline */
+  font-size: 24px;
+  text-decoration: none;
+  color: black;
 }
 
 .card-header.black a:hover {
-  text-decoration: underline; /* Optional: Add underline on hover */
+  text-decoration: none; 
 }
 
 /* Centering container */
@@ -265,10 +289,10 @@ form input, form select, form button {
   background: white;
   color: black;
   border-radius: 8px;
-  padding: 20px; /* Increase padding */
-  width: 400px; /* Increase width */
-  height: 300px; /* Increase height */
-  margin: 3px; /* Decreased margin */
+  padding: 20px; 
+  width: 400px; 
+  height: 300px; 
+  margin: 3px; 
   overflow: hidden;
   display: flex;
   flex-direction: column;
@@ -278,11 +302,26 @@ form input, form select, form button {
   background: white;
   color: black;
   border-radius: 8px;
-  padding: 20px; /* Increase padding */
-  width: 400px; /* Increase width */
-  height: 300px; /* Increase height */
-  margin: 3px; /* Decreased margin */
+  padding: 20px; 
+  width: 400px; 
+  height: 300px; 
+  margin: 3px; 
   overflow: hidden;
   display: flex;
   flex-direction: column;
+}
+
+/* Larger icon size */
+.large-icon {
+  font-size: 5em; 
+}
+
+/* Full card link style */
+.full-card-link {
+  display: flex;
+  flex-direction: column;
+  text-decoration: none;
+  color: inherit;
+  width: 100%;
+  height: 100%;
 }

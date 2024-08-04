@@ -1,5 +1,4 @@
 /home/user1/VS_Workspace/speed-dating-application/
-├── app.log
 ├── config
 │   ├── db.js
 │   └── passport.js
@@ -15,24 +14,24 @@
 │   ├── components
 │   │   ├── common
 │   │   │   └── store.js
-│   │   ├── entry
-│   │   │   └── todoList
-│   │   │       ├── components
-│   │   │       │   └── todo
-│   │   │       │       └── todo.pug
-│   │   │       ├── index.js
-│   │   │       ├── lib
-│   │   │       │   ├── actions.js
-│   │   │       │   ├── reducer.js
-│   │   │       │   └── rendering.js
-│   │   │       ├── logger
-│   │   │       │   └── lib
-│   │   │       │       ├── logger.js
-│   │   │       │       ├── mask.js
-│   │   │       │       └── User.js
-│   │   │       ├── todoList.css
-│   │   │       └── todoList.pug
-│   │   └── masked.log
+│   │   └── entry
+│   │       └── todoList
+│   │           ├── components
+│   │           │   └── todo
+│   │           │       └── todo.pug
+│   │           ├── index.js
+│   │           ├── lib
+│   │           │   ├── actions.js
+│   │           │   ├── reducer.js
+│   │           │   └── rendering.js
+│   │           ├── logger
+│   │           │   └── lib
+│   │           │       ├── logger.js
+│   │           │       ├── mask.js
+│   │           │       └── User.js
+│   │           ├── logs.json
+│   │           ├── todoList.css
+│   │           └── todoList.pug
 │   ├── index.js
 │   ├── models
 │   │   ├── Todo.js
@@ -55,7 +54,8 @@
 │       ├── other-business.pug
 │       ├── register.pug
 │       ├── reports.pug
-│       └── sales.pug
+│       ├── sales.pug
+│       └── tickets.pug
 └── webpack.config.js
 
 16 directories, 43 files
