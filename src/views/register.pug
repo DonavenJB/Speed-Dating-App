@@ -1,6 +1,6 @@
-html
-  include ./includes/header.pug
-  body
+include ./includes/header.pug
+body
+  .card
     h1 Register
     div(id="error-message", style="color: red;")
     form(id="register-form", action="/register", method="post")
@@ -45,4 +45,4 @@ html
           document.getElementById('error-message').innerText = 'An unexpected error occurred. Please try again later.';
         }
       });
-    include ./includes/footer.pug
+  include ./includes/footer.pug

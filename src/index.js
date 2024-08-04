@@ -7,227 +7,159 @@ const passport = require('passport');
 const connectDB = require("../config/db");
 const User = require("./models/User");
 const Todo = require("./models/Todo");
-const logger = require('../logger');  // General logger
-const { maskedLogger } = require('./components/entry/todoList/logger/lib/logger');  // Masked logger
+const Mask = require("./components/entry/todoList/logger/lib/mask");
+const logger = new Mask(require("./components/entry/todoList/logger/lib/logger")); // Import and use the masked logger
 
 // Ensure Passport configuration is loaded
 require('../config/passport')(passport);
 
 const app = express();
 
-logger.info('[Startup] Application starting...');
-maskedLogger.debug('[Startup] Environment variables loaded:', process.env); // Sensitive data: Environment variables
-
 connectDB();
-logger.info('[Database] Database connected successfully');
 
 app.set("view engine", "pug");
 app.set("views", path.join(__dirname, "views"));
-logger.info('[Express] View engine set to Pug');
-logger.debug('[Express] Views directory set to:', path.join(__dirname, "views"));
 
 app.use(bodyParser.json());
-logger.info('[Middleware] JSON Body parser added');
 app.use(bodyParser.urlencoded({ extended: true }));
-logger.info('[Middleware] URL-encoded Body parser added');
 app.use(express.static(path.resolve(__dirname, "..", "dist")));
-logger.info('[Middleware] Static files directory set to:', path.resolve(__dirname, "..", "dist"));
 
 app.use(session({
   secret: process.env.SESSION_SECRET || 'your-secret-key',
   resave: false,
   saveUninitialized: false
 }));
-logger.info('[Middleware] Session middleware configured');
 app.use(passport.initialize());
-logger.info('[Middleware] Passport initialized');
 app.use(passport.session());
-logger.info('[Middleware] Passport session middleware added');
 
 app.use((req, res, next) => {
-  maskedLogger.debug('[Middleware] User in session:', req.user); // Sensitive data: User session information
   res.locals.user = req.user;
   next();
 });
-logger.info('[Middleware] User information added to response locals');
 
 function ensureAuthenticated(req, res, next) {
   if (req.isAuthenticated()) {
-    maskedLogger.debug('[Middleware] User authenticated:', req.user._id); // Sensitive data: User ID
     return next();
   }
-  logger.info('[Middleware] User not authenticated, redirecting to /login');
   res.redirect('/login');
 }
 
 app.get("/", ensureAuthenticated, async (req, res) => {
-  logger.info('[GET /] Request received');
   try {
-    maskedLogger.debug('[GET /] Fetching todos for user:', req.user._id); // Sensitive data: User ID
+    logger.info({ endpoint: "/", query: req.query, description: "Query made" }); // Log query
     const todos = await Todo.find({ user: req.user._id });
-    logger.info('[GET /] Todos fetched successfully');
-    maskedLogger.debug('[GET /] Todos:', JSON.stringify(todos)); // Sensitive data: Todos information
-    res.render("index", { todos, user: req.user });
-    logger.info('[GET /] Response rendered with todos and user information');
+    logger.info({ endpoint: "/", todos, user: req.user, description: "Response with todos" }); // Log response
+    res.render("index", { todos, user: req.user, page: 'home' });
   } catch (error) {
-    logger.error('[GET /] Error fetching todos:', error.message);
     res.status(500).send('Server Error');
-    logger.info('[GET /] Server error response sent');
   }
 });
 
 app.get("/reports", ensureAuthenticated, (req, res) => {
-  logger.info('[GET /reports] Request received');
-  res.render("reports");
-  logger.info('[GET /reports] Response rendered');
+  res.render("reports", { page: 'reports' });
 });
 
 app.get("/sales", ensureAuthenticated, (req, res) => {
-  logger.info('[GET /sales] Request received');
-  res.render("sales");
-  logger.info('[GET /sales] Response rendered');
+  res.render("sales", { page: 'sales' });
 });
 
 app.get("/analytics", ensureAuthenticated, (req, res) => {
-  logger.info('[GET /analytics] Request received');
-  res.render("analytics");
-  logger.info('[GET /analytics] Response rendered');
+  res.render("analytics", { page: 'analytics' });
 });
 
 app.get("/customer-support", ensureAuthenticated, (req, res) => {
-  logger.info('[GET /customer-support] Request received');
-  res.render("customer-support");
-  logger.info('[GET /customer-support] Response rendered');
+  res.render("customer-support", { page: 'customer-support' });
 });
 
 app.get("/finance", ensureAuthenticated, (req, res) => {
-  logger.info('[GET /finance] Request received');
-  res.render("finance");
-  logger.info('[GET /finance] Response rendered');
+  res.render("finance", { page: 'finance' });
 });
 
 app.get("/human-resources", ensureAuthenticated, (req, res) => {
-  logger.info('[GET /human-resources] Request received');
-  res.render("human-resources");
-  logger.info('[GET /human-resources] Response rendered');
+  res.render("human-resources", { page: 'human-resources' });
 });
 
 app.get("/it-support", ensureAuthenticated, (req, res) => {
-  logger.info('[GET /it-support] Request received');
-  res.render("it-support");
-  logger.info('[GET /it-support] Response rendered');
+  res.render("it-support", { page: 'it-support' });
 });
 
 app.get("/marketing", ensureAuthenticated, (req, res) => {
-  logger.info('[GET /marketing] Request received');
-  res.render("marketing");
-  logger.info('[GET /marketing] Response rendered');
+  res.render("marketing", { page: 'marketing' });
 });
 
 app.get("/operations", ensureAuthenticated, (req, res) => {
-  logger.info('[GET /operations] Request received');
-  res.render("operations");
-  logger.info('[GET /operations] Response rendered');
+  res.render("operations", { page: 'operations' });
 });
 
 app.get("/other-business", ensureAuthenticated, (req, res) => {
-  logger.info('[GET /other-business] Request received');
-  res.render("other-business");
-  logger.info('[GET /other-business] Response rendered');
+  res.render("other-business", { page: 'other-business' });
 });
 
 app.post("/todo", ensureAuthenticated, async (req, res) => {
-  logger.info('[POST /todo] Request received');
-  maskedLogger.debug('[POST /todo] Request body:', req.body); // Sensitive data: Request body
+  logger.info({ endpoint: "/todo", query: req.body, description: "Query made" }); // Log query
   try {
-    maskedLogger.debug('[POST /todo] Creating new todo:', req.body.todo); // Sensitive data: New todo data
     const newTodo = new Todo({
       text: req.body.todo,
-      user: req.user._id // Sensitive data: User ID
+      user: req.user._id
     });
     await newTodo.save();
-    logger.info('[POST /todo] Todo saved successfully');
-    maskedLogger.debug('[POST /todo] Saved todo:', JSON.stringify(newTodo)); // Sensitive data: Saved todo data
-
+    logger.info({ endpoint: "/todo", description: "New todo created", newTodo }); // Log new todo
     const todos = await Todo.find({ user: req.user._id });
-    logger.info('[POST /todo] Fetched todos for response');
-    maskedLogger.debug('[POST /todo] Todos:', JSON.stringify(todos)); // Sensitive data: Todos information
+    logger.info({ endpoint: "/todo", todos, user: req.user, description: "Response with todos" }); // Log response
     res.json(todos);
-    logger.info('[POST /todo] JSON response sent with todos');
   } catch (error) {
-    logger.error('[POST /todo] Error saving todo:', error.message);
     res.status(500).send('Server Error');
-    logger.info('[POST /todo] Server error response sent');
   }
 });
 
 app.get("/register", (req, res) => {
-  logger.info('[GET /register] Request received');
-  res.render("register", { user: req.user });
-  logger.info('[GET /register] Response rendered');
+  res.render("register", { user: req.user, page: 'register' });
 });
 
 app.get("/login", (req, res) => {
-  logger.info('[GET /login] Request received');
-  res.render("login", { user: req.user });
-  logger.info('[GET /login] Response rendered');
+  res.render("login", { user: req.user, page: 'login' });
 });
 
 app.post("/register", async (req, res) => {
   const { username, password, role } = req.body;
-  logger.info('[POST /register] Request received');
-  maskedLogger.debug('[POST /register] Request body:', req.body); // Sensitive data: Registration data
+  logger.info({ endpoint: "/register", query: req.body, description: "Registration data" }); // Log registration data
   try {
-    maskedLogger.debug('[POST /register] Creating new user with username:', username); // Sensitive data: Username
     const user = new User({ username, password, role });
     await user.save();
-    logger.info('[POST /register] User registered successfully');
+    logger.info({ endpoint: "/register", description: "User registered", user }); // Log user registered
     res.status(200).json({ redirectUrl: '/login' });
-    logger.info('[POST /register] JSON response sent with redirect URL');
   } catch (error) {
-    logger.error('[POST /register] Registration error:', error.message);
     res.status(400).json({ error: error.message });
-    logger.info('[POST /register] JSON response sent with error message');
   }
 });
 
 app.post("/login", (req, res, next) => {
-  logger.info('[POST /login] Request received');
-  maskedLogger.debug('[POST /login] Request body:', req.body); // Sensitive data: Login data
+  logger.info({ endpoint: "/login", query: req.body, description: "Login data" }); // Log login data
   passport.authenticate('local', (err, user, info) => {
     if (err) {
-      logger.error('[POST /login] Authentication error:', err);
       return next(err);
     }
     if (!user) {
-      logger.info('[POST /login] Authentication failed');
       return res.redirect('/login');
     }
     req.logIn(user, (err) => {
       if (err) {
-        logger.error('[POST /login] Login error:', err);
         return next(err);
       }
-      logger.info('[POST /login] Authentication successful');
+      logger.info({ endpoint: "/login", description: "User logged in", user }); // Log user logged in
       return res.redirect('/');
     });
   })(req, res, next);
 });
 
 app.get("/logout", (req, res, next) => {
-  logger.info('[GET /logout] Request received');
-  maskedLogger.debug('[GET /logout] Logging out user:', req.user._id); // Sensitive data: User ID
   req.logout((err) => {
     if (err) {
-      logger.error('[GET /logout] Logout error:', err);
       return next(err);
     }
-    logger.info('[GET /logout] User logged out successfully');
+    logger.info({ endpoint: "/logout", description: "User logged out", user: req.user }); // Log user logged out
     res.redirect("/login");
-    logger.info('[GET /logout] Redirected to /login');
   });
 });
 
 module.exports = app;
-
-logger.info('[Startup] Application setup complete, ready to listen for requests');

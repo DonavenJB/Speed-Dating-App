@@ -1,24 +1,22 @@
 const path = require("path");
-const { createLogger, format, transports } = require("winston");
+const bunyan = require("bunyan");
 const Mask = require("./mask");
-
+// favour using env variables to provide your code with external configs
+// it makes it a lot simpler when you want to change the configs
 const level = process.env.NODE_LOGGING_LEVEL || "info";
 
-const logger = createLogger({
-  level,
-  format: format.combine(
-    format.timestamp(),
-    format.json()
-  ),
-  transports: [
-    new transports.Console(),
-    new transports.File({ filename: path.resolve(__dirname, "..", "..", "..", "..", "masked.log") })
+const log = bunyan.createLogger({
+  name: "myapp",
+  streams: [
+    {
+      level,
+      stream: process.stdout
+    },
+    {
+      level,
+      path: path.resolve(__dirname, "..", "..", "logs.json")
+    }
   ]
 });
 
-const maskedLogger = new Mask(logger);
-
-module.exports = {
-  logger: logger,
-  maskedLogger: maskedLogger
-};
+module.exports = new Mask(log);

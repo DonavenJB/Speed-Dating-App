@@ -1,14 +1,25 @@
-head
-  title Todos
-  link(rel="stylesheet", href="/styles.css")
-body
-  nav
-    ul
-      li: a(href="/") Home
-      if !user
-        li: a(href="/register") Register
-        li: a(href="/login") Login
-      else
-        li: a(href="/logout") Logout
-        if user.role === 'admin'
-          li: a(href="/admin") Admin
+doctype html
+html(lang="en")
+  head
+    title Todos
+    link(rel="stylesheet", href="./styles.css")
+  body
+    header
+      .navbar
+        a.brand(href="#") Conglomerate
+        ul.menu
+          li: a(href="/") Home
+          if !user
+            if page !== 'login'
+              li: a(href="/login") Login
+            if page !== 'register'
+              li: a(href="/register") Register
+          if user
+            li: a(href="/logout") Logout
+            if user.role === 'admin'
+              li: a(href="/admin") Admin
+    script.
+      function toggleMenu() {
+        var menu = document.querySelector('.menu');
+        menu.classList.toggle('active');
+      }

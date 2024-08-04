@@ -11,28 +11,108 @@ body {
   padding: 12px;
 }
 
+/* Sticky navbar with underline */
 header {
-  background: #333;
-  color: #fff;
+  background-color: steelblue;
+  color: white;
   padding: 10px 20px;
+  width: 100%;
+  box-sizing: border-box;
+  position: -webkit-sticky; /* For Safari */
+  position: sticky;
+  top: 0;
+  z-index: 1000;
 }
 
-nav ul {
+header .brand {
+  font-size: 24px;
+  font-weight: bold;
+  color: white;
+  text-decoration: none;
+}
+
+header .menu {
+  display: flex;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+header .menu li {
+  margin-left: 20px;
+}
+
+header .menu li a {
+  color: white;
+  text-decoration: none;
+  font-size: 18px;
+}
+
+header .menu li a:hover {
+  text-decoration: underline;
+}
+
+header .navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+}
+
+header .menu-container {
+  display: flex;
+  align-items: center;
+}
+
+header .menu-container .menu {
+  display: flex;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+header .menu-container .menu li {
+  margin-left: 20px;
+}
+
+header .menu-container .menu li a {
+  color: white;
+  text-decoration: none;
+  font-size: 18px;
+}
+
+header .hamburger {
+  display: none;
+  font-size: 24px;
+  color: white;
+  cursor: pointer;
+}
+
+.nav-bar {
+  display: none;
+}
+
+.nav-bar ul {
   list-style: none;
   margin: 0;
   padding: 0;
   display: flex;
 }
 
-nav ul li {
+.nav-bar ul li {
   margin-right: 10px;
 }
 
-nav ul li a {
+.nav-bar ul li a {
   color: #fff;
   text-decoration: none;
 }
 
+.nav-bar.show {
+  display: block;
+}
+
+/* Additional styles */
 form div {
   margin-bottom: 10px;
 }
@@ -52,11 +132,11 @@ form input, form select, form button {
   background: white;
   color: black;
   border-radius: 8px;
-  padding: 16px;
-  max-width: 400px;
-  margin: 5px auto;
+  padding: 12px;  /* Decreased padding */
+  width: 250px;
+  height: 197px;
+  margin: 3px;  /* Decreased margin */
   overflow: hidden;
-  height: 400px;
   display: flex;
   flex-direction: column;
 }
@@ -65,7 +145,7 @@ form input, form select, form button {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  margin-bottom: 16px;
+  margin-bottom: 12px;  /* Decreased margin */
 }
 
 .card-header.black h1, .card-header.black a {
@@ -102,14 +182,18 @@ form input, form select, form button {
   justify-content: center;
   max-width: 1200px;
   width: 100%;
-  margin-bottom: 5px;
+  margin-bottom: -1px;  /* Decreased margin */
 }
 
 .col-md-3 {
-  flex: 1;
-  max-width: 25%;
+  flex: 0 0 250px;  /* Set fixed width */
+  max-width: 250px;  /* Set fixed width */
   box-sizing: border-box;
-  padding: 5px;
+  padding: 3px;  /* Decreased padding */
+}
+
+.row .col-md-3:not(:last-child) {
+  margin-right: 10px; /* Decreased horizontal margin */
 }
 
 /* Team color styles */
