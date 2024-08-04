@@ -4,5 +4,3 @@ mixin todoList(todos)
   ul(data-js="todo-list", class="todo-list")
     each val in todos
       +todo(val)
-  form(action="", data-js="todo-form")
-    input(type="text", placeholder="Todo", data-js="todo-field")

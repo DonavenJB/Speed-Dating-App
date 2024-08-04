@@ -3,17 +3,41 @@ include ../components/entry/todoList/todoList.pug
 html
   include ./includes/header.pug
   head
-    title Tickets
+    title Profile
     link(rel="stylesheet", href="/styles.css")
   body
-    .container
-      .row
-        .col-md-12
-          .card
-            .card-header.black
-              h1
-                a(href="/tickets") Tickets
-              span.counter(data-js="number-of-todos")= todos.length
-            .card-body
-              +todoList(todos)
+    .main-container
+      .sidebar
+        .sidebar-item Dashboard
+        .sidebar-item Projects
+        .sidebar-item Scrum Management
+        .sidebar-item Ticketing System
+        .sidebar-item User Management
+        .sidebar-item Calendar
+        .sidebar-item Reports
+        .sidebar-item Documentation
+        .sidebar-item Notifications
+        .sidebar-item Support
+        .sidebar-item Settings
+      .content-main
+        .content
+          .container
+            .row
+              .col-md-12
+                .table-container
+                  h1
+                    a(href="/tickets") Tickets
+                    span.counter(data-js="number-of-todos")= todos.length
+                  table.table.table-striped.table-hover
+                    thead
+                      tr
+                        th Ticket
+                        th Description
+                        th Status
+                        th Actions
+                  // The form and todo list should be placed after the table header
+                  form(action="", data-js="todo-form")
+                    input(type="text", placeholder="Todo", data-js="todo-field")
+                  ul(data-js="todo-list", class="todo-list")
+                    +todoList(todos)
     include ./includes/footer.pug

@@ -40,14 +40,18 @@ Store.subscribe((state, action) => {
 Store.addModule("todoList", reducer);
 
 // Initialize todos
-const todos = Array.from(list.children).map(e => e.textContent);
+const todos = Array.from(list.querySelectorAll('tr')).slice(1).map(e => ({
+  title: e.cells[0].textContent,
+  description: e.cells[1].textContent,
+  status: e.cells[2].textContent
+}));
 logger.info('Initial todos:', todos);
 Store.dispatch({ type: INIT_TODO_LIST, todoList: { todos } });
 
 form.addEventListener("submit", async (e) => {
   e.preventDefault();
-  const todo = textField.value;
-  logger.info('Form submitted - New todo:', todo);
+  const todoTitle = textField.value;
+  logger.info('Form submitted - New todo:', todoTitle);
 
   try {
     const res = await fetch("http://localhost:3000/todo", {
@@ -56,8 +60,7 @@ form.addEventListener("submit", async (e) => {
         Accept: "application/json",
         "Content-Type": "application/json"
       },
-      body: JSON.stringify({   
- todo })
+      body: JSON.stringify({ title: todoTitle, description: 'New Description', status: 'Pending' })
     });
     const todos = await res.json();   
 
@@ -66,10 +69,14 @@ form.addEventListener("submit", async (e) => {
     // Update DOM here
     removeChildren(list); // Remove existing list items
     todos.forEach(todo => {
-      const li = document.createElement("li");
-      li.className = "todo-list__li";
-      li.textContent = todo.text;
-      list.appendChild(li);
+      const newRow = document.createElement("tr");
+      newRow.innerHTML = `
+        <td>${todo.title}</td>
+        <td>${todo.description}</td>
+        <td>${todo.status}</td>
+        <td></td>
+      `;
+      list.appendChild(newRow);
     });
 
     numberOfTodos.textContent = todos.length;

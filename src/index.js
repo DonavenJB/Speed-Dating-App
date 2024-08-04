@@ -67,7 +67,6 @@ app.get("/reports", ensureAuthenticated, (req, res) => {
   res.render("reports", { page: 'reports' });
 });
 
-// Add the following routes to serve the respective Pug templates
 app.get("/teams", ensureAuthenticated, (req, res) => {
   res.render("teams", { page: 'teams' });
 });
