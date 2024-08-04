@@ -1,3 +1,11 @@
+/* Centering container */
+.center-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+
 /* General styles */
 * {
   padding: 0;
@@ -9,6 +17,7 @@ body {
   background: steelblue;
   color: white;
   padding: 12px;
+  margin: 0;
 }
 
 /* Sticky navbar with underline */
@@ -241,4 +250,39 @@ form input, form select, form button {
 
 .card-header.black a:hover {
   text-decoration: underline; /* Optional: Add underline on hover */
+}
+
+/* Centering container */
+.center-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+
+/* Specific styles for the login card */
+.reg-card {
+  background: white;
+  color: black;
+  border-radius: 8px;
+  padding: 20px; /* Increase padding */
+  width: 400px; /* Increase width */
+  height: 300px; /* Increase height */
+  margin: 3px; /* Decreased margin */
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+}
+
+.login-card {
+  background: white;
+  color: black;
+  border-radius: 8px;
+  padding: 20px; /* Increase padding */
+  width: 400px; /* Increase width */
+  height: 300px; /* Increase height */
+  margin: 3px; /* Decreased margin */
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
 }

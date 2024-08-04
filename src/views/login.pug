@@ -1,14 +1,15 @@
 include ./includes/header.pug
 body
-  .card
-    h1 Login
-    form(action="/login", method="post")
-      div
-        label(for="username") Username:
-        input(type="text", name="username", required)
-      div
-        label(for="password") Password:
-        input(type="password", name="password", required)
-      div
-        button(type="submit") Login
+  .center-container
+    .login-card
+      h1 Login
+      form(action="/login", method="post")
+        div
+          label(for="username") Username:
+          input(type="text", name="username", required)
+        div
+          label(for="password") Password:
+          input(type="password", name="password", required)
+        div
+          button(type="submit") Login
   include ./includes/footer.pug
